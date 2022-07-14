@@ -62,6 +62,21 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
     return NAME;
   }
 
+  @ReactMethod
+  public boolean isConnected() {
+    return isConnect;
+  }
+
+  @ReactMethod
+  public void rebindService() {
+    ReactApplicationContext reactAppContext = getReactApplicationContext();
+
+    reactAppContext.unbindService(conn);
+
+    Intent intent = new Intent(reactAppContext, PosprinterService.class);
+    reactAppContext.bindService(intent, conn, reactAppContext.BIND_AUTO_CREATE);
+  }
+
   // Connect to printer
   @ReactMethod
   public void connectNet(String ip, Integer port, Promise promise) {

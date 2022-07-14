@@ -9,11 +9,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={{ borderWidth: 1 }}
-        value={ip}
-        onChangeText={(value) => setIp(value)}
-      />
+      <TextInput value={ip} onChangeText={(value) => setIp(value)} />
       <Button
         title="Connect"
         onPress={() =>
@@ -42,11 +38,7 @@ export default function App() {
           XprinterThermal.setLabelSize(50, 50);
         }}
       />
-      <TextInput
-        style={{ borderWidth: 1 }}
-        value={text}
-        onChangeText={(value) => setText(value)}
-      />
+      <TextInput value={text} onChangeText={(value) => setText(value)} />
       <Button
         title="Print"
         onPress={() => {

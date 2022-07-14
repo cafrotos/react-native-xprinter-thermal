@@ -6,7 +6,48 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-const XprinterThermal = NativeModules.XprinterThermal  ? NativeModules.XprinterThermal  : new Proxy(
+export interface IXprinterThermal {
+  connectNet: (ip: string, port: number) => Promise<void>;
+  disconnectNet: () => Promise<void>;
+  setLabelSize: (height: number, width: number) => void;
+  setLabelGap: (vertical: number, horizontal: number) => void;
+  addPrintText: (
+    x: number,
+    y: number,
+    font: string,
+    rotation: number,
+    xMultiplication: number,
+    yMultiplication: number,
+    content: string
+  ) => void;
+  addPrintBarcode: (
+    x: number,
+    y: number,
+    codeType: string,
+    height: number,
+    human: number,
+    rotation: number,
+    narrow: number,
+    wide: number,
+    content: string
+  ) => void;
+  addPrintQRcode: (
+    x: number,
+    y: number,
+    eccLevel: string,
+    cellWidth: number,
+    mode: string,
+    rotation: number,
+    model: string,
+    mask: string,
+    content: string
+  ) => void;
+  print: () => Promise<string>;
+}
+
+export const XprinterThermal: IXprinterThermal = NativeModules.XprinterThermal
+  ? NativeModules.XprinterThermal
+  : new Proxy(
       {},
       {
         get() {
@@ -14,7 +55,3 @@ const XprinterThermal = NativeModules.XprinterThermal  ? NativeModules.XprinterT
         },
       }
     );
-
-export function multiply(a: number, b: number): Promise<number> {
-  return XprinterThermal.multiply(a, b);
-}

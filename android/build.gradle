@@ -123,9 +123,12 @@ repositories {
 
 
 dependencies {
-    //noinspection GradleDynamicVersion
+  //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
-// From node_modules
+  // From node_modules
+
+  // Xprinter sdk
+  implementation fileTree(dir: "libs", include: ["*.jar"])
 }
 
 if (isNewArchitectureEnabled()) {

@@ -22,5 +22,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <service android:name="net.posprinter.service.PosprinterService" >
+      </service>
     </application>
 </manifest>

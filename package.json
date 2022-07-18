@@ -1,6 +1,6 @@
 {
   "name": "react-native-xprinter-thermal",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Portable xprinter native module for react-native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

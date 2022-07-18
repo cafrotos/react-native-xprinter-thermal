@@ -28,7 +28,7 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
   public static final String NAME = "XprinterThermal";
 
   public static IMyBinder binder;
-  public static boolean isConnect = false;
+  public boolean isConnect = false;
 
   ServiceConnection conn = new ServiceConnection() {
 

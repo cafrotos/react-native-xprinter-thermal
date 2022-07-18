@@ -7,6 +7,7 @@ const LINKING_ERROR =
   '- You are not using Expo managed workflow\n';
 
 export interface IXprinterThermal {
+  isConnected: () => boolean;
   connectNet: (ip: string, port: number) => Promise<void>;
   disconnectNet: () => Promise<void>;
   setLabelSize: (height: number, width: number) => void;

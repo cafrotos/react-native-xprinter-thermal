@@ -63,8 +63,8 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public boolean isConnected() {
-    return isConnect;
+  public void isConnected(Promise promise) {
+    promise.resolve(isConnect);
   }
 
   @ReactMethod

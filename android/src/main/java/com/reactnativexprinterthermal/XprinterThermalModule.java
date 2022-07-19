@@ -45,7 +45,7 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
 
   private ArrayList<byte[]> printActions = new ArrayList<byte[]>();
   private byte[] labelSize = DataForSendToPrinterTSC.sizeBymm(50,
-    50);
+      50);
   private byte[] labelGap = DataForSendToPrinterTSC.gapBymm(2, 2);
 
   public XprinterThermalModule(ReactApplicationContext reactContext) {
@@ -68,13 +68,15 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void rebindService() {
+  public void rebindService(Promise promise) {
     ReactApplicationContext reactAppContext = getReactApplicationContext();
 
     reactAppContext.unbindService(conn);
 
     Intent intent = new Intent(reactAppContext, PosprinterService.class);
     reactAppContext.bindService(intent, conn, reactAppContext.BIND_AUTO_CREATE);
+    
+    promise.resolve("Rebind Success");
   }
 
   // Connect to printer
@@ -135,50 +137,50 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void setLabelSize(double height, double width) {
     this.labelSize = DataForSendToPrinterTSC.sizeBymm(height,
-      width);
+        width);
   }
 
   // Set label gap by mm
   @ReactMethod
   public void setLabelGap(double vertical, double horizontal) {
     this.labelGap = DataForSendToPrinterTSC.gapBymm(vertical,
-      horizontal);
+        horizontal);
   }
 
   // Add text to print
   @ReactMethod
   public void addPrintText(int x, int y, String font, int rotation, int xMultiplication,
-                           int yMultiplication, String content) {
+      int yMultiplication, String content) {
     printActions.add(DataForSendToPrinterTSC.text(x, y, font, rotation, xMultiplication, yMultiplication, content));
   }
 
   // Add barcode to print
   @ReactMethod
   public void addPrintBarcode(int x,
-                              int y,
-                              String codeType,
-                              int height,
-                              int human,
-                              int rotation,
-                              int narrow,
-                              int wide,
-                              String content) {
+      int y,
+      String codeType,
+      int height,
+      int human,
+      int rotation,
+      int narrow,
+      int wide,
+      String content) {
     printActions.add(DataForSendToPrinterTSC.barCode(
-      x, y, codeType, height, human, rotation, narrow, wide,
-      content));
+        x, y, codeType, height, human, rotation, narrow, wide,
+        content));
   }
 
   // Add QRcode to print
   @ReactMethod
   public void addPrintQRcode(int x,
-                             int y,
-                             String eccLevel,
-                             int cellWidth,
-                             String mode,
-                             int rotation,
-                             String model,
-                             String mask,
-                             String content) {
+      int y,
+      String eccLevel,
+      int cellWidth,
+      String mode,
+      int rotation,
+      String model,
+      String mask,
+      String content) {
     printActions.add(DataForSendToPrinterTSC.qrCode(x, y, eccLevel, cellWidth, mode, rotation, model, mask, content));
   }
 

@@ -8,6 +8,7 @@ const LINKING_ERROR =
 
 export interface IXprinterThermal {
   isConnected: () => Promise<boolean>;
+  rebindService: () => Promise<any>;
   connectNet: (ip: string, port: number) => Promise<void>;
   disconnectNet: () => Promise<void>;
   setLabelSize: (height: number, width: number) => void;

@@ -14,7 +14,7 @@ export default function App() {
         title="Connect"
         onPress={() =>
           XprinterThermal.connectNet(ip, 9100)
-            .then((result) => console.log(result))
+            .then((result) => console.log(result, ip))
             .catch((err) => console.log(err))
         }
       />
@@ -41,7 +41,9 @@ export default function App() {
       <TextInput value={text} onChangeText={(value) => setText(value)} />
       <Button
         title="Print"
-        onPress={() => {
+        onPress={async () => {
+          await XprinterThermal.connectNet('192.168.10.222', 9100);
+          XprinterThermal.setLabelSize(100, 150);
           XprinterThermal.addPrintBarcode(
             50,
             0,
@@ -66,7 +68,7 @@ export default function App() {
             '19001009'
           );
 
-          XprinterThermal.print()
+          await XprinterThermal.print()
             .then((result) => console.log(result))
             .catch((err) => console.log(err));
         }}

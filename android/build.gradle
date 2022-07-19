@@ -126,7 +126,7 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   // From node_modules
-
+  implementation 'androidx.appcompat:appcompat:1.4.2'
   // Xprinter sdk
   implementation fileTree(dir: "libs", include: ["*.jar"])
 }

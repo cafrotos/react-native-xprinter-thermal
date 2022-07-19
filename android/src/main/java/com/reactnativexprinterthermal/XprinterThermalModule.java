@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -75,7 +74,7 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
 
     Intent intent = new Intent(reactAppContext, PosprinterService.class);
     reactAppContext.bindService(intent, conn, reactAppContext.BIND_AUTO_CREATE);
-    
+
     promise.resolve("Rebind Success");
   }
 
@@ -86,7 +85,7 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
       promise.reject("Xprinter module is not binded!");
       return;
     }
-    binder.connectNetPort("192.168.10.221", 9100, new UiExecute() {
+    binder.connectNetPort(ip, 9100, new UiExecute() {
       @Override
       public void onsucess() {
         isConnect = true;

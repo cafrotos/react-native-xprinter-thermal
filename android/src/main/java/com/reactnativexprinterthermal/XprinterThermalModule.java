@@ -185,7 +185,7 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
 
   // Print
   @ReactMethod
-  public void print(Promise promise) {
+  public void print(int numberLabel, Promise promise) {
     if (isConnect) {
       binder.writeDataByYouself(new UiExecute() {
 
@@ -210,7 +210,7 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
           list.add(labelGap);
           list.add(DataForSendToPrinterTSC.cls());
           list.addAll(printActions);
-          list.add(DataForSendToPrinterTSC.print(1));
+          list.add(DataForSendToPrinterTSC.print(numberLabel));
 
           return list;
         }

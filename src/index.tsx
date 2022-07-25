@@ -44,7 +44,7 @@ export interface IXprinterThermal {
     mask: string,
     content: string
   ) => void;
-  print: () => Promise<string>;
+  print: (numberLabel: number) => Promise<string>;
 }
 
 export const XprinterThermal: IXprinterThermal = NativeModules.XprinterThermal

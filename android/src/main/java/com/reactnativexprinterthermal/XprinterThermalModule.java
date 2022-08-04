@@ -45,7 +45,7 @@ public class XprinterThermalModule extends ReactContextBaseJavaModule {
   private ArrayList<byte[]> printActions = new ArrayList<byte[]>();
   private byte[] labelSize = DataForSendToPrinterTSC.sizeBymm(50,
       50);
-  private byte[] labelGap = DataForSendToPrinterTSC.gapBymm(2, 2);
+  private byte[] labelGap = DataForSendToPrinterTSC.gapBymm(0, 0);
 
   public XprinterThermalModule(ReactApplicationContext reactContext) {
     super(reactContext);
